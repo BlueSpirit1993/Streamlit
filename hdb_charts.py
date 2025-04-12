@@ -228,7 +228,7 @@ def plot_resale_price_all(df):
 # mean resale price across single town and all flat type
 def plot_resale_price_single(df, town):       ##changes: added df
     #df_initial_preproc(df)
-    df_query = df.query("town == @town")
+    df = df[df['town']==town]
     sns.set_style("whitegrid")
     sns.set_palette("RdBu")
     hue_order = [
@@ -241,7 +241,7 @@ def plot_resale_price_single(df, town):       ##changes: added df
         "Multi-Gen",
     ]
     g = sns.catplot(
-        data=df_query,
+        data=df,
         x="town",
         y="resale_price",
         kind="bar",
